@@ -34,12 +34,3 @@ class Stack:
         return len(self.item)
     
 
-s = Stack()
-s.push('A')
-s.push('B')
-s.push('C')
-s.push('D')
-print(s.get_stack())
-print(s.is_empty())
-print(s.peek())
-print(s.length())
