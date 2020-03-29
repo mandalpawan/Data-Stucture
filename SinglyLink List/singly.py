@@ -77,17 +77,16 @@ class singlyLinkList:
         self.head = nxt
 
     def removeDublicate(self):
-        cur_node= self.head
-        while cur_node:
-            temp =cur_node.value
-            temp_node = self.head
-            while temp_node:
-                if temp == temp_node.value:
-                    print("There is a dublicate Node",temp,temp_node.value)
-                else:
-                    print("There is no dublicate Node")
-                temp_node = temp_node.next
-            cur_node = cur_node.next
+        cur= self.head
+        prev = None
+        dup_value = dict()
+        while cur:
+            if cur.value in dup_value:
+                prev.next = cur.next
+            else:
+                dup_value[cur.value] = 1
+                prev = cur
+            cur = prev.next
 
 mylist = singlyLinkList()
 mylist.appendEnd(1)
@@ -96,10 +95,13 @@ mylist.appendEnd(3)
 mylist.appendEnd(4)
 mylist.appendEnd(5)
 mylist.appendEnd(6)
+mylist.appendEnd(1)
 mylist.print_list()
-mylist.rotate(4)
 print()
+mylist.removeDublicate()
 mylist.print_list()
+
+
 
 
 
