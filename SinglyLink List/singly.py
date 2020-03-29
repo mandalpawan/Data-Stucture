@@ -104,6 +104,16 @@ class singlyLinkList:
             return 1+ self.count_recursive(node.next,data)
         else:
             return  self.count_recursive(node.next,data)
+    
+    def sec_lst_ele(self):
+        cur = self.head
+        pre = None
+        sec = None
+        while cur.next:
+            pre = cur
+            sec = pre.value
+            cur = cur.next
+        return sec
 
 mylist = singlyLinkList()
 mylist.appendEnd(1)
@@ -115,7 +125,8 @@ mylist.appendEnd(6)
 mylist.appendEnd(1)
 mylist.print_list()
 print()
-print(mylist.count_occur(1))
+#print(mylist.count_occur(1))
+print(mylist.sec_lst_ele())
 
 
 
