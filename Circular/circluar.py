@@ -41,10 +41,31 @@ class Circular:
             if(cur == self.head):
                 break
 
+    def remove_node(self,key):
+        if self.head.value == key:
+            cur_node = self.head
+            nxt = cur_node.next
+            while(cur_node.next != self.head):
+                cur_node = cur_node.next
+            cur_node.next = nxt
+            self.head = nxt
+        else:
+            cur_node = self.head
+            pre = None
+            while(cur_node.next != self.head):
+                pre = cur_node
+                cur_node = cur_node.next
+                if(cur_node.value == key):
+                    pre.next = cur_node.next
+                    cur_node= cur_node.next
+                
+
 clist = Circular()
 clist.append('B')
 clist.append('C')
 clist.append('D')
 clist.append('E')
 clist.prepend('A')
+clist.remove_node('B')
+clist.remove_node('E')
 clist.print_list()
