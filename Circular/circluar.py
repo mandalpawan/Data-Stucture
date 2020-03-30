@@ -58,6 +58,48 @@ class Circular:
                 if(cur_node.value == key):
                     pre.next = cur_node.next
                     cur_node= cur_node.next
+
+    def __len__(self):
+        index = 0
+     
+        cur = self.head
+        while cur:
+            index += 1
+            cur = cur.next
+            if (cur == self.head):
+                break
+        return index
+
+    def split(self):
+        size = len(self)
+        
+        if size == 0:
+            return None
+        if size ==1:
+            return self.head
+        
+        mid = size//2
+        count = 0
+
+        pre = None
+        cur = self.head
+
+        while cur and count < mid:
+            count +=1
+            pre = cur
+            cur = cur.next
+        pre.next = self.head
+
+        split_list = Circular()
+        while cur.next != self.head:
+            split_list.append(cur.value)
+            cur = cur.next
+        split_list.append(cur.value)
+
+        self.print_list()
+        print("-------------------")
+        split_list.print_list()
+
                 
 
 clist = Circular()
@@ -66,6 +108,8 @@ clist.append('C')
 clist.append('D')
 clist.append('E')
 clist.prepend('A')
-clist.remove_node('B')
-clist.remove_node('E')
-clist.print_list()
+#clist.remove_node('B')
+#clist.remove_node('E')
+#print(clist.length())
+#clist.print_list()
+clist.split()
