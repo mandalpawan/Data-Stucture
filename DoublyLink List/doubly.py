@@ -34,8 +34,34 @@ class DoblyLinkList:
             newNode.next = cur_node
             newNode.prev = None
             self.head = newNode
-            
-    
+
+    def add_after_node(self, key, data):
+        cur = self.head
+        while cur:
+            if cur.next is None and cur.data == key:
+                self.append(data)
+            elif cur.data == key:
+                new_node = Node(data)
+                nxt = cur.next 
+                cur.next = new_node
+                new_node.next = nxt
+                nxt.prev = new_node
+            cur = cur.next
+
+    def add_before_node(self, key, data):
+        cur = self.head 
+        while cur:
+            if cur.prev is None and cur.data == key:
+                self.prepend(data)
+            elif cur.data == key:
+                new_node = Node(data)
+                prev = cur.prev
+                prev.next = new_node
+                cur.prev = new_node
+                new_node.next = cur
+            cur = cur.next
+
+  
     def print_list(self):
         cur_node = self.head
         while cur_node:
@@ -46,8 +72,9 @@ class DoblyLinkList:
 dllist = DoblyLinkList()
 dllist.append(2)
 dllist.append(3)
-dllist.append(4)
 dllist.append(5)
 dllist.prepend(1)
+dllist.add_after_node(3,4)
+dllist.add_before_node(5,4.4)
 dllist.print_list()
 
