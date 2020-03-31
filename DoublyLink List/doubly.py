@@ -21,6 +21,20 @@ class DoblyLinkList:
             cur_node.next = newNode
             newNode.prev = cur_node
             newNode.next = None
+
+    def prepend(self,data):
+        newNode = Node(data)
+        if self.head is None:
+            self.head = newNode
+            newNode.next = None
+            newNode.prev = None
+        else:
+            cur_node = self.head
+            cur_node.prev = newNode
+            newNode.next = cur_node
+            newNode.prev = None
+            self.head = newNode
+            
     
     def print_list(self):
         cur_node = self.head
@@ -30,10 +44,10 @@ class DoblyLinkList:
 
 
 dllist = DoblyLinkList()
-dllist.append(1)
 dllist.append(2)
 dllist.append(3)
 dllist.append(4)
 dllist.append(5)
+dllist.prepend(1)
 dllist.print_list()
 
